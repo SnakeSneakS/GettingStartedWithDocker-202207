@@ -1,6 +1,6 @@
 # 動かすもの: nextcloud
 
-version: '2'
+version: "3"
 
 # volumeを作る 
 # 「docker volume ls」コマンドなどでvolumeを確認可能
