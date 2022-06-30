@@ -1,0 +1,56 @@
+# 動かすもの: nextcloud
+
+version: '2'
+
+# volumeを作る 
+volumes: 
+  nextcloud: 
+    name: docker_nextcloud_volume
+
+# 動かすサービス 
+services:
+
+  # 動かすアプリ名。 
+  nextcloud-app: 
+  
+    # 動かすdockerイメージ 
+    image: nextcloud:latest
+
+    # dockerで使うvolumeのファイル所有ユーザのidを指定する
+    # これがないと「permission denied」エラーで死ぬ
+    # ファイル所有ユーザを確認するには「ls -n nextcloud」など
+    user: 501:20
+
+    # 動かすport
+    # - ${動かすポート}:${コンテナのポート}
+    ports:
+      - 8888:80
+
+    # ボリューム: 永続的なデータを(コンテナ外のホストPCに)保存するのに使う。
+    # 「volume mount」や「bind mount」などがある。
+    # 以下ではvolumeマウントを行いbindマウントをコメントアウトしているが、興味ある人は逆でやってみると良いかもしれない。 
+    volumes:
+      # bind: 手元の指定したフォルダと紐付ける。
+      # 手元PCでの./nextcloudディレクトリが、コンテナ内での/var/www/htmlとして扱われる。
+      # macの場合: 動作が遅い。macではdockerを仮想環境で動かしており、その時のファイル同期のコストが云々らしい(よく分かっていない) 
+      #- type: bind  
+      #  source: ./nextcloud   # ホストPCのpath (事前に「mkdir -p nextcloud」コマンドなどでディレクトリを作っておく必要がある)
+      #  target: /var/www/html # コンテナのpath
+      
+      # volume: dockerが管理するボリュームと紐づける
+      # docker volume lsなどでボリュームを確認できる。
+      # 7行目付近でボリュームは作成した
+      # macの場合: docker動かしているのと同じ仮想環境にファイルを置いているためbindより早い。ただし仮想環境にあるファイルへのアクセスはめんどくさそう。
+      - type: volume
+        source: nextcloud     # 作成したボリュームの名前
+        target: /var/www/html # コンテナのpath
+
+    # コンテナが勝手に落ちた時などに必ずrestartする
+    restart: always
+
+    # 環境変数の読み込み 
+    # 環境毎に異なる値を与えたい時に使う。例えばパスワードなど。    
+    env_file: 
+      - ./.env
+
+      
