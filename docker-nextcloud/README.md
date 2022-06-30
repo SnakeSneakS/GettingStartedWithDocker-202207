@@ -24,6 +24,7 @@
 - バックグラウンドで実行: ```docker compose up -d```
     - ```docker compose stop```で実行停止 
     - ```docker compose exec app /bin/bash```でコンテナに入る 
+    - ```docker compose logs -f --tail 100```で最新100件のログを見る
 
 - アクセス
     - http://localhost:8888 または　http://127.0.0.1:8888

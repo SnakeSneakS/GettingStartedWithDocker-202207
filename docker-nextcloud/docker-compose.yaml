@@ -3,6 +3,7 @@
 version: '2'
 
 # volumeを作る 
+# 「docker volume ls」コマンドなどでvolumeを確認可能
 volumes: 
   nextcloud: 
     name: docker_nextcloud_volume
@@ -17,9 +18,9 @@ services:
     image: nextcloud:latest
 
     # dockerで使うvolumeのファイル所有ユーザのidを指定する
-    # これがないと「permission denied」エラーで死ぬ
+    # bind mountしている時に、これがないと「permission denied」エラーで死ぬ可能性がある
     # ファイル所有ユーザを確認するには「ls -n nextcloud」など
-    user: 501:20
+    # user: 501:20
 
     # 動かすport
     # - ${動かすポート}:${コンテナのポート}
@@ -53,4 +54,4 @@ services:
     env_file: 
       - ./.env
 
-      
+
