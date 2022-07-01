@@ -11,6 +11,6 @@
    - socket通信
 
 # スライド
-- [git](./document/out/git.pdf) 
-- [docker](./document/out/docker.pdf) 
+- [git](./document/git/git.pdf) 
+- [docker](./document/docker/docker.pdf) 
 
