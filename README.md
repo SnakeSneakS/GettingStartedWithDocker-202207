@@ -1,5 +1,5 @@
 # Dockerなどに触れる会
-1. miswのホームページを動かす
+1. dockerでホームページを動かす
 
 2. nextcloudを動かす
 
@@ -9,4 +9,8 @@
   
 4. unity & go server でリアルタイム対戦に触れる  (WIP)
    - socket通信
+
+# スライド
+- [git](./document/out/git.pdf) 
+- [docker](./document/out/docker.pdf) 
 
