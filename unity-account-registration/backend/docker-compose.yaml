@@ -1,0 +1,39 @@
+version: "3"
+
+volumes:
+  db-volume: 
+
+services:
+
+  db: 
+    image: mysql:latest
+    container_name: ${MYSQL_HOST}
+    environment:
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - TZ=Asia/Tokyo
+    ports:
+      - ${MYSQL_PORT}
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - db-volume:/var/lib/mysql 
+    
+
+  go-server: 
+    build: golang:latest
+    ports:
+      - ${CONTAINER_PORT}:${SERVER_PORT}
+    env_file: 
+      - .env 
+    environment: 
+      TZ: Asia/Tokyo 
+    restart: always 
+    tty: true
+    depends_on: 
+      - db
+    volumes:
+      - .:/work
+    working_dir: /work
+    entrypoint: ["go","run","main.go"]

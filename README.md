@@ -6,6 +6,6 @@
    - httpリクエスト 
    - MYSQLデータベース 
   
-3. unity & go server でリアルタイム対戦に触れる 
+3. unity & go server でリアルタイム対戦に触れる  (WIP)
    - socket通信
 

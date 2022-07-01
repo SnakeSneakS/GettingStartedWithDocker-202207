@@ -15,6 +15,7 @@ services:
   nextcloud-app: 
   
     # 動かすdockerイメージ 
+    # 本来はタグも直接指定した方が良い(latestタグだと最新のイメージを使うため、最新のイメージが変わった際に仕様変更などに巻き込まれて動かなくなる可能性がある) 
     image: nextcloud:latest
 
     # dockerで使うvolumeのファイル所有ユーザのidを指定する
