@@ -1,2 +1,2 @@
 - unity-account-registrationがUnityのプロジェクトのフォルダになります。
-- unityをgitで管理する際には、.gitignoreファイルを[これ]](https://github.com/github/gitignore/blob/main/Unity.gitignore)に倣って作ってください。 
+- unityをgitで管理する際には、.gitignoreファイルを[これ](https://github.com/github/gitignore/blob/main/Unity.gitignore)に倣って作ってください。 
