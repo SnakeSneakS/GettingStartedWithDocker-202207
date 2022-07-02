@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  go-server:
+    image: golang:latest 
+    ports:
+      - ${SERVICE_PORT}:${PORT}
+    environment: 
+      TZ: Asia/Tokyo 
+      PORT: ${PORT}
