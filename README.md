@@ -7,8 +7,10 @@
    - httpリクエスト 
    - MYSQLデータベース 
   
-4. unity & go server でリアルタイム対戦に触れる  (WIP)
+<!--
+4. unity & go server でリアルタイム対戦に触れる  
    - socket通信
+  -->
 
 # スライド
 - [git](./document/git/git.pdf) 
